@@ -22,16 +22,15 @@ const initializeDbAndServer = async () => {
 };
 initializeDbAndServer();
 //get all movies API
-app.get("/movies", async (request, response) => {
+app.get("/movies/", async (request, response) => {
   const getMoviesQuery = `SELECT * FROM movie;`;
   const movies = await db.all(getMoviesQuery);
   let list = [];
   for (let mo of movies) {
     let ob = {
-      movieId: mo.movie_id,
-      directorId: mo.director_id,
+      
       movieName: mo.movie_name,
-      leadActor: mo.lead_actor,
+      
     };
     list.push(ob);
   }
